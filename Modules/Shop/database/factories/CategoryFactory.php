@@ -4,6 +4,8 @@ namespace Modules\Shop\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use Illuminate\Support\Str;
+
 class CategoryFactory extends Factory
 {
     /**
@@ -16,7 +18,11 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        return [];
+        $name = fake()->sentence(2);
+        return [
+            'name' => $name,
+            'slug' => Str::slug($name),
+        ];
     }
 }
 
