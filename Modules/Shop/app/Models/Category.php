@@ -4,11 +4,11 @@ namespace Modules\Shop\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Shop\Database\factories\CategoryFactory;
 
+use App\Traits\UuidTrait;
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -21,9 +21,9 @@ class Category extends Model
         'name',
     ];
     
-    protected static function newFactory(): CategoryFactory
+    protected static function newFactory()
     {
-        //return CategoryFactory::new();
+        return \Modules\Shop\database\factories\CategoryFactory::new();
     }
 
     public function children()
